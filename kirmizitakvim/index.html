@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kırmızı Takvim — gizlilik politikası ve destek. Verileriniz yalnızca cihazınızda saklanır.">
+<meta name="color-scheme" content="light dark">
+<title>Kırmızı Takvim Gizlilik ve Destek</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+
+<style>
+  :root {
+    --ground: #FBF6F8;
+    --surface: #FFFFFF;
+    --ink: #241726;
+    --muted: #7C6A76;
+    --accent: #C4326A;
+    --accent-soft: #FBE7EE;
+    --line: #EBDCE3;
+    --shadow: 0 1px 2px rgba(60, 20, 40, .05), 0 8px 24px -12px rgba(60, 20, 40, .18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #150F1B;
+      --surface: #1F1727;
+      --ink: #F2E8ED;
+      --muted: #AE9DAA;
+      --accent: #F58CB0;
+      --accent-soft: #33202C;
+      --line: #322639;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #150F1B;
+    --surface: #1F1727;
+    --ink: #F2E8ED;
+    --muted: #AE9DAA;
+    --accent: #F58CB0;
+    --accent-soft: #33202C;
+    --line: #322639;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -12px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: Karla, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  header.masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.25rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mark {
+    width: 54px;
+    height: 54px;
+    flex: none;
+    border-radius: 15px;
+    background: radial-gradient(120% 120% at 25% 15%, #FF87AC 0%, #C4326A 62%, #96154A 100%);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+  }
+  .mark svg { display: block; }
+
+  .masthead h1 {
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .masthead p {
+    margin: .25rem 0 0;
+    color: var(--muted);
+    font-size: .95rem;
+  }
+  .masthead .titles { flex: 1 1 14rem; }
+
+  .langbar {
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+  .langbar button {
+    font: 500 .82rem/1 Karla, sans-serif;
+    letter-spacing: .04em;
+    padding: .5rem .9rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .langbar button[aria-pressed="true"] {
+    background: var(--accent);
+    color: #fff;
+  }
+  .langbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .summary {
+    margin: 2rem 0 0;
+    padding: 1.25rem 1.4rem;
+    background: var(--accent-soft);
+    border-radius: 14px;
+    font-size: 1.02rem;
+  }
+  .summary strong { color: var(--accent); }
+
+  section { margin-top: 2.5rem; }
+
+  h2 {
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 600;
+    font-size: 1.32rem;
+    margin: 0 0 .6rem;
+    text-wrap: balance;
+  }
+  h3 {
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 .75rem;
+    font-weight: 700;
+  }
+  p { margin: 0 0 1rem; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+
+  ul { margin: 0 0 1rem; padding-left: 1.15rem; }
+  li { margin-bottom: .45rem; }
+
+  .facts {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+  .facts div {
+    background: var(--surface);
+    padding: .9rem 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .facts dt, .facts .k { color: var(--muted); font-size: .9rem; }
+  .facts .v { font-weight: 500; }
+  .facts .v.no { color: var(--accent); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--shadow);
+  }
+  .card + .card { margin-top: .75rem; }
+  .card h4 { margin: 0 0 .35rem; font-size: 1rem; font-weight: 700; }
+  .card p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+
+  [lang]:not([data-active]) { display: none; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="mark" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="11" stroke="#fff" stroke-width="3.4"/>
+        <path d="M15 9.5c2.6 3 4.2 5 4.2 6.8a4.2 4.2 0 1 1-8.4 0c0-1.8 1.6-3.8 4.2-6.8z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="titles">
+      <h1 lang="tr" data-active>Kırmızı Takvim — Gizlilik ve Destek</h1>
+      <h1 lang="en">Kırmızı Takvim — Privacy &amp; Support</h1>
+      <p lang="tr" data-active>Sürüm 1.0 · Son güncelleme: 26 Ağustos 2026</p>
+      <p lang="en">Version 1.0 · Last updated 26 August 2026</p>
+    </div>
+    <div class="langbar" role="group" aria-label="Dil / Language">
+      <button type="button" data-lang="tr" aria-pressed="true">Türkçe</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </header>
+
+  <p class="summary" lang="tr" data-active>
+    Kırmızı Takvim <strong>hiçbir veri toplamaz.</strong> Girdiğiniz her şey yalnızca telefonunuzda saklanır;
+    sunucumuz, hesap sistemimiz, reklam ağımız ve analiz aracımız yoktur.
+  </p>
+  <p class="summary" lang="en">
+    Kırmızı Takvim <strong>collects no data.</strong> Everything you enter stays on your phone. We run no servers,
+    no accounts, no ad networks and no analytics.
+  </p>
+
+  <section>
+    <h2 lang="tr" data-active>Toplanan veriler</h2>
+    <h2 lang="en">Data we collect</h2>
+
+    <div class="facts" lang="tr" data-active>
+      <div><span class="k">Kişisel veri toplama</span><span class="v no">Yok</span></div>
+      <div><span class="k">Hesap / kayıt</span><span class="v no">Gerekmez</span></div>
+      <div><span class="k">Sunucuya gönderim</span><span class="v no">Yok</span></div>
+      <div><span class="k">Reklam ve izleyiciler</span><span class="v no">Yok</span></div>
+      <div><span class="k">Analiz / çökme raporu</span><span class="v no">Yok</span></div>
+    </div>
+    <div class="facts" lang="en">
+      <div><span class="k">Personal data collection</span><span class="v no">None</span></div>
+      <div><span class="k">Account / sign-up</span><span class="v no">Not required</span></div>
+      <div><span class="k">Data sent to servers</span><span class="v no">None</span></div>
+      <div><span class="k">Ads and trackers</span><span class="v no">None</span></div>
+      <div><span class="k">Analytics / crash reports</span><span class="v no">None</span></div>
+    </div>
+
+    <p lang="tr" data-active>
+      Regl tarihleriniz, belirtileriniz, ruh hâliniz, günlük notlarınız, kilo ve hamilelik kayıtlarınız
+      yalnızca cihazınızın kendi depolama alanında (iOS uygulama kutusu ve uygulama grubu) tutulur.
+      Bu verilere ne biz ne de üçüncü taraflar erişebilir. iPhone yedeklemeniz açıksa veriler
+      Apple'ın şifreli yedeğine dahil olabilir; bu yedek Apple'ın gizlilik politikasına tabidir.
+    </p>
+    <p lang="en">
+      Your period dates, symptoms, moods, journal entries, weight and pregnancy records live only in your
+      device's own storage (the iOS app container and its app group). Neither we nor any third party can
+      reach them. If iPhone backup is enabled, the data may be included in Apple's encrypted backup, which
+      is governed by Apple's own privacy policy.
+    </p>
+  </section>
+
+  <section>
+    <h2 lang="tr" data-active>İzinler ve neden istendikleri</h2>
+    <h2 lang="en">Permissions and why we ask</h2>
+
+    <div class="card">
+      <h4 lang="tr" data-active>Bildirimler</h4>
+      <h4 lang="en">Notifications</h4>
+      <p lang="tr" data-active>Regl, doğurgan pencere, ilaç ve hamilelik hatırlatmaları için. Tüm bildirimler cihazınızda planlanır; hiçbir sunucudan gönderilmez.</p>
+      <p lang="en">For period, fertile window, medication and pregnancy reminders. Every notification is scheduled locally on your device — none are sent from a server.</p>
+    </div>
+    <div class="card">
+      <h4 lang="tr" data-active>Kamera ve fotoğraflar</h4>
+      <h4 lang="en">Camera and photos</h4>
+      <p lang="tr" data-active>Yalnızca ovülasyon testi çubuğunu tarayıp çizgi yoğunluğunu ölçmek için. Görüntü cihazda işlenir, kaydedilmez ve hiçbir yere gönderilmez.</p>
+      <p lang="en">Only to scan an ovulation test strip and measure line intensity. The image is processed on device, never stored and never uploaded.</p>
+    </div>
+    <div class="card">
+      <h4 lang="tr" data-active>Face ID / cihaz parolası</h4>
+      <h4 lang="en">Face ID / device passcode</h4>
+      <p lang="tr" data-active>İsteğe bağlı uygulama kilidi için. Kimlik doğrulama tamamen iOS tarafından yapılır; biyometrik verilere erişimimiz yoktur.</p>
+      <p lang="en">For the optional app lock. Authentication is handled entirely by iOS; we never see biometric data.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 lang="tr" data-active>Verilerinizi silmek</h2>
+    <h2 lang="en">Deleting your data</h2>
+    <p lang="tr" data-active>
+      Uygulama içinde <strong>Ayarlar → Gizlilik &amp; veri → Tüm verileri sil</strong> adımıyla her şeyi kalıcı olarak
+      silebilirsiniz. Uygulamayı telefonunuzdan kaldırmak da tüm kayıtları siler. Verileriniz bizde bulunmadığı için
+      silme talebi göndermenize gerek yoktur.
+    </p>
+    <p lang="en">
+      Inside the app, <strong>Settings → Privacy &amp; data → Delete all data</strong> erases everything permanently.
+      Removing the app from your phone also deletes all records. Since we never hold your data, there is no deletion
+      request to send us.
+    </p>
+    <p lang="tr" data-active>
+      KVKK ve GDPR kapsamındaki erişim, düzeltme ve silme haklarınız doğrudan cihazınızda kullanılabilir durumdadır;
+      işleyen bir veri sorumlusu bulunmadığından aktarım, saklama süresi veya üçüncü taraf paylaşımı söz konusu değildir.
+    </p>
+    <p lang="en">
+      Your rights of access, correction and erasure under GDPR and Turkish KVKK are exercised directly on your device.
+      There is no controller processing your data, so there is no transfer, retention period or third-party sharing.
+    </p>
+  </section>
+
+  <section>
+    <h2 lang="tr" data-active>Sağlık uyarısı</h2>
+    <h2 lang="en">Health disclaimer</h2>
+    <p lang="tr" data-active>
+      Kırmızı Takvim bir takvim ve kayıt aracıdır. Tahminler geçmiş kayıtlarınıza dayalı yaklaşık değerlerdir;
+      tıbbi tavsiye, teşhis veya doğum kontrol yöntemi değildir. Sağlığınızla ilgili kararlar için hekiminize danışın.
+    </p>
+    <p lang="en">
+      Kırmızı Takvim is a calendar and logging tool. Predictions are estimates based on your own records — they are
+      not medical advice, a diagnosis, or a method of contraception. Talk to your doctor about health decisions.
+    </p>
+  </section>
+
+  <section id="destek">
+    <h2 lang="tr" data-active>Destek</h2>
+    <h2 lang="en">Support</h2>
+
+    <div class="card">
+      <h4 lang="tr" data-active>Tahminler neden değişiyor?</h4>
+      <h4 lang="en">Why do predictions change?</h4>
+      <p lang="tr" data-active>Uygulama ortalama döngü ve regl sürenizi kayıtlarınızdan öğrenir. İlk birkaç döngüde tıbbi varsayılanlar (28 / 5 gün) kullanılır, kayıt ekledikçe tahminler kişiselleşir.</p>
+      <p lang="en">The app learns your average cycle and period length from your records. For the first few cycles it uses medical defaults (28 / 5 days), then predictions become personal as you log more.</p>
+    </div>
+    <div class="card">
+      <h4 lang="tr" data-active>Uygulama dilini nasıl değiştiririm?</h4>
+      <h4 lang="en">How do I change the language?</h4>
+      <p lang="tr" data-active>Ayarlar → Görünüm &amp; dil bölümünden 13 dilden birini seçebilirsiniz. Seçiminiz cihazınızın dilinden bağımsızdır.</p>
+      <p lang="en">Settings → Appearance &amp; language lets you pick one of 13 languages, independent of your device language.</p>
+    </div>
+    <div class="card">
+      <h4 lang="tr" data-active>Widget nasıl eklenir?</h4>
+      <h4 lang="en">How do I add a widget?</h4>
+      <p lang="tr" data-active>Ana ekranda boş bir alana basılı tutun, sol üstteki + düğmesine dokunun ve Kırmızı Takvim'i arayın. Döngü çubuğu ve ruh hâli widget'ları 4×2 boyutunda eklenebilir.</p>
+      <p lang="en">Touch and hold an empty spot on your Home Screen, tap the + button, then search for Kırmızı Takvim. The cycle bar and mood widgets are available in the 4×2 size.</p>
+    </div>
+    <div class="card">
+      <h4 lang="tr" data-active>Verilerimi yeni telefona taşıyabilir miyim?</h4>
+      <h4 lang="en">Can I move my data to a new phone?</h4>
+      <p lang="tr" data-active>Evet — iPhone yedeklemesi (iCloud veya bilgisayar) ile yeni cihaza geçtiğinizde kayıtlarınız uygulamayla birlikte gelir.</p>
+      <p lang="en">Yes — when you restore a new iPhone from an iCloud or computer backup, your records come along with the app.</p>
+    </div>
+
+    <h3 lang="tr" data-active>İletişim</h3>
+    <h3 lang="en">Contact</h3>
+    <p lang="tr" data-active>
+      Soru, hata bildirimi ve öneriler için: <a href="mailto:alymbeklika@gmail.com">alymbeklika@gmail.com</a><br>
+      Genellikle 2–3 iş günü içinde yanıt veriyoruz.
+    </p>
+    <p lang="en">
+      Questions, bug reports and suggestions: <a href="mailto:alymbeklika@gmail.com">alymbeklika@gmail.com</a><br>
+      We usually reply within 2–3 business days.
+    </p>
+  </section>
+
+  <footer>
+    <p lang="tr" data-active>Kırmızı Takvim · Geliştirici: Furkan Zinnuri Işık · Bu politikada bir değişiklik olursa bu sayfa güncellenir ve güncelleme tarihi değiştirilir.</p>
+    <p lang="en">Kırmızı Takvim · Developer: Furkan Zinnuri Işık · If this policy changes, this page is updated and the date above changes with it.</p>
+  </footer>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.langbar button');
+  function setLang(lang) {
+    document.querySelectorAll('[lang]').forEach(el => {
+      if (el.closest('.langbar')) return;
+      if (el.getAttribute('lang') === lang) el.setAttribute('data-active', '');
+      else el.removeAttribute('data-active');
+    });
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    document.documentElement.setAttribute('lang', lang);
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+</script>
+
+</body>
+</html>
